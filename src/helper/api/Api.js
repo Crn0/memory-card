@@ -3,7 +3,9 @@ import { v4 as uuid } from 'uuid';
 export default async function GetPokemon() {
     try {
         const url = 'https://pokeapi.co/api/v2/generation/4';
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            mode: 'cors'
+        });
 
         if(response.status === 200) {
             const result = await response.json();
@@ -34,11 +36,12 @@ export default async function GetPokemon() {
 async function GetNameAndImage(name) {
   try {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-    const response = await fetch(url);
+    const response = await fetch(url, {
+        mode: 'cors',
+    });
 
     if(response.status === 200) {
         const result = await response.json();
-
 
         return result;
     }
