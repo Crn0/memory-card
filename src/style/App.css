@@ -1,42 +1,94 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --white-font: white;
+  --hex-820347: #820347;
+
+}
+
+/* display */
+.grid {
+  display: grid;
+
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* alignment */
+
+.template-columns {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1rem;
+}
+
+.place-center-center {
+  place-content: center;
+  place-items: center;
+}
+
+.text-center {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* size */
+.pad1rem {
+  padding: 1rem;
 }
 
-@keyframes logo-spin {
+.font2rem {
+  font-size: 2rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+button > img {
+  width: 50%;
+}
+
+.height-100vh {
+  height: 100vh;
+}
+
+.margin-top {
+  margin-top: 2%;
+}
+
+/* colors */
+.font-white {
+  color: var(--white-font);
+}
+
+.hex-820347 {
+  background-color: var(--hex-820347);
+}
+
+
+/* transition */
+.transition-transform{
+  transition: transform 1s ease-in-out
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+/* animation */
+
+
+.animation {
+  animation: rotate 3s ease-in infinite alternate;
+}
+
+@keyframes rotate {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0);
   }
+
   to {
-    transform: rotate(360deg);
+    transform: rotate(2turn);
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
