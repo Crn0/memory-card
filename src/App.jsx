@@ -80,7 +80,7 @@ function App() {
     // reset current score
     setScore({...score, current: 0});
   }
-  console.log(isWin)
+  
   return (
     <>
       <Header />
