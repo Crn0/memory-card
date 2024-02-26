@@ -78,7 +78,7 @@ button > img {
 
 /* transition */
 .transition-transform{
-  transition: transform 1s ease-in-out
+  transition: transform 1s ease-in-out;
 }
 
 button:hover {
