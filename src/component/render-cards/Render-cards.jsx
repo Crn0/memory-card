@@ -4,7 +4,7 @@ import Card from "../card/Card";
 export default function RenderCards({pokemonList, handlePlay}) {
    
     return (
-      <>
+      <div className="grid template-columns">
        {pokemonList.map(pokemon => 
             <Card 
                 key={pokemon.id}
@@ -15,7 +15,7 @@ export default function RenderCards({pokemonList, handlePlay}) {
                 handlePlay={handlePlay}
             />
         )}
-      </>
+      </div>
     )
   }
   

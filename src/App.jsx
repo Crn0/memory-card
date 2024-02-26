@@ -85,8 +85,27 @@ function App() {
   return (
     <>
       <Header />
-
-      {!isWin ?
+      {!isWin && 
+        <ScoreBoard 
+          score={score}
+          pokemonList={pokemonList}
+        />
+      }
+      {
+        !isWin && 
+        <RenderCards 
+          pokemonList={pokemonList}
+          handlePlay={handlePlay}
+        />
+      }
+      {
+        isWin && 
+        <Dialog 
+          score={score}
+          handleWin={handleWin}
+        />
+      }
+      {/* {!isWin ?
         <Main >
           <ScoreBoard 
             score={score}
@@ -103,7 +122,7 @@ function App() {
           score={score}
           handleWin={handleWin}
         />
-      }
+      } */}
     
       <Footer />
     </>
