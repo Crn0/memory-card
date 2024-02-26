@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Pokeball from './assets/pokeball.jpg'
 import Header from './component/header/Header';
-import Main from './component/main/Main';
 import ScoreBoard from './component/score-board/Score-board';
 import GetPokemon from './helper/api/Api'
 import RenderCards from './component/render-cards/Render-cards';
@@ -105,25 +104,7 @@ function App() {
           handleWin={handleWin}
         />
       }
-      {/* {!isWin ?
-        <Main >
-          <ScoreBoard 
-            score={score}
-            pokemonList={pokemonList}
-          />
 
-          <RenderCards 
-            pokemonList={pokemonList}
-            handlePlay={handlePlay}
-          />
-        </Main>
-        :
-        <Dialog 
-          score={score}
-          handleWin={handleWin}
-        />
-      } */}
-    
       <Footer />
     </>
   )
