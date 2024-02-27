@@ -38,6 +38,10 @@
   justify-content: space-around;
 }
 
+.content-center {
+  justify-content: center;
+}
+
 .self-center {
   place-self: center;
 }
