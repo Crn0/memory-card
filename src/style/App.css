@@ -1,7 +1,7 @@
 :root {
   --white-font: white;
   --hex-820347: #820347;
-
+  --border-color: #7851A9;
 }
 
 /* display */
@@ -12,8 +12,6 @@
 
 .flex {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
 /* alignment */
@@ -30,6 +28,34 @@
 
 .text-center {
   text-align: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.self-center {
+  place-self: center;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.margin-top {
+  margin-top: auto;
+}
+
+.margin-bottom {
+  margin-bottom: auto;
+}
+
+.gap {
+  gap: 5px;
 }
 
 /* size */
@@ -53,17 +79,7 @@ button > img {
   height: 100vh;
 }
 
-.margin-auto {
-  margin: auto;
-}
 
-.margin-top {
-  margin-top: auto;
-}
-
-.margin-bottom {
-  margin-bottom: auto;
-}
 
 
 /* colors */
@@ -86,8 +102,6 @@ button:hover {
 }
 
 /* animation */
-
-
 .animation {
   animation: rotate 3s ease-in infinite alternate;
 }
@@ -100,4 +114,12 @@ button:hover {
   to {
     transform: rotate(2turn);
   }
+}
+
+/* hover */
+
+.btn-hover:hover {
+  border: 10px solid var(--border-color);
+  background-color: var(--hex-820347);
+  color: var(--white-font);
 }
