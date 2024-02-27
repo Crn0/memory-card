@@ -13,7 +13,7 @@ export default async function GetPokemon(difficulty) {
 
             const fetchNamesAndImages = await urlArray.map((pokemon) => GetNameAndImage(pokemon.name));
             const promiseAll = await Promise.all(fetchNamesAndImages); 
-           console.log(urlArray)
+       
             const pokemonTeam = promiseAll.map((pokemon) => {
                 const uniqueId = uuid();
                 
