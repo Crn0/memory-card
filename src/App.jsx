@@ -3,6 +3,7 @@ import Pokeball from './assets/pokeball.jpg'
 import Header from './component/header/Header';
 import ScoreBoard from './component/score-board/Score-board';
 import GetPokemon from './helper/api/Api'
+import Difficulty from './component/difficulty/difficulty';
 import RenderCards from './component/render-cards/Render-cards';
 import Shuffle from './helper/shuffle/shuffle';
 import Dialog from './component/win-dialog/Dialog';
@@ -12,22 +13,31 @@ import './style/App.css'
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
   const [score, setScore] = useState({current: 0, best: 0,});
+  const [difficulty, setDifficulty] = useState(0);
+  const isGameInit = difficulty > 0;
   const isWin = score.current === pokemonList.length;
-  
+
   useEffect(() => {
     const control = new AbortController();
 
-    GetPokemon().then((data) => {
+    GetPokemon(difficulty).then((data) => {
       if(!control.signal.aborted) {
         
         setPokemonList(data);
       }
     });
 
-    return () => control.abort();
-  }, []);
+    return () => {
+      control.abort();
+      setPokemonList([]);
+    };
+  }, [difficulty]);
 
-  if(pokemonList.length === 0) {
+  if(!isGameInit) {
+    return <Difficulty setDifficulty={setDifficulty}/>
+  }
+
+  if(pokemonList.length === 0 && isGameInit) {
     return (
       <>
         <div className='grid height-100vh place-center-center position-relative'>
@@ -80,6 +90,17 @@ function App() {
     // reset current score
     setScore({...score, current: 0});
   }
+
+  const handleHome = () => {
+    const newPokemonList = pokemonList.map((pokemon) => {
+      return {...pokemon, isClicked: false};
+    });
+    // SET pokemon lists to new object
+    setPokemonList(newPokemonList);
+    // reset current score
+    setScore({...score, current: 0});
+    setDifficulty(0)
+  }
   
   return (
     <>
@@ -102,6 +123,7 @@ function App() {
         <Dialog 
           score={score}
           handleWin={handleWin}
+          handleHome={handleHome}
         />
       }
 
