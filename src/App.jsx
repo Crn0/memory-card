@@ -91,15 +91,11 @@ function App() {
     setScore({...score, current: 0});
   }
 
-  const handleHome = () => {
-    const newPokemonList = pokemonList.map((pokemon) => {
-      return {...pokemon, isClicked: false};
-    });
-    // SET pokemon lists to new object
-    setPokemonList(newPokemonList);
-    // reset current score
-    setScore({...score, current: 0});
-    setDifficulty(0)
+  const handleRestart = () => {
+
+    setPokemonList([]);
+    setScore({...score, current: 0, best: 0});
+    setDifficulty(0);
   }
   
   return (
@@ -123,7 +119,7 @@ function App() {
         <Dialog 
           score={score}
           handleWin={handleWin}
-          handleHome={handleHome}
+          handleRestart={handleRestart}
         />
       }
 
