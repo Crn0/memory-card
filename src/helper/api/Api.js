@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-export default async function GetPokemon() {
+export default async function GetPokemon(difficulty) {
     try {
         const url = 'https://pokeapi.co/api/v2/generation/4';
         const response = await fetch(url, {
@@ -9,19 +9,19 @@ export default async function GetPokemon() {
 
         if(response.status === 200) {
             const result = await response.json();
-            const urlArray = await result['pokemon_species'].slice(0, 20);
+            const urlArray = await result['pokemon_species'].slice(0, difficulty);
 
             const fetchNamesAndImages = await urlArray.map((pokemon) => GetNameAndImage(pokemon.name));
             const promiseAll = await Promise.all(fetchNamesAndImages); 
-           
-            const pokemonTeam = await promiseAll.map((pokemon) => {
+           console.log(urlArray)
+            const pokemonTeam = promiseAll.map((pokemon) => {
                 const uniqueId = uuid();
-
+                
                 const {name, sprites: {
                     'front_default': imageUrl,
                 }} = pokemon;
 
-
+            
                 return {name, imageUrl, id: uniqueId, isClicked: false};
             });
 
