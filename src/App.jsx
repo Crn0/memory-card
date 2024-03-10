@@ -59,7 +59,8 @@ function App() {
 
       return pokemon;
     })
-    const randomPokemon = Shuffle(newPokemon)
+    const randomPokemon = Shuffle(newPokemon);
+    setPokemonList(randomPokemon);
   
     if(isClicked) {
       // If the card has been clicked twice
@@ -70,15 +71,14 @@ function App() {
         return {...pokemon, isClicked: false};
       });
       // SET pokemon lists to new object
-      setPokemonList(newPokemonList);
+      setPokemonList(Shuffle(newPokemonList));
       // reset current score
       return setScore({...score, current: 0});
     }
 
     score.current === score.best && setScore({...score, current: score.current + 1, best: score.best + 1});
     score.current > score.best && setScore({...score, current: score.current + 1, best: score.best + 1});
-    score.current < score.best && setScore({...score, current: score.current + 1})
-    setPokemonList(randomPokemon);
+    score.current < score.best && setScore({...score, current: score.current + 1});
   };
 
   const handleWin = () => {
